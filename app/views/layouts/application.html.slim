@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title #{@title} | SLP Portal
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    .modal-form
+
+    nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
+      .container
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to root_path, class: "navbar-brand" do
+            | SLP Portal
+
+        .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
+          ul.nav.navbar-nav
+            li
+              = link_to admin_path do
+                = fa_icon 'cog', text: '管理'
+
+    .container
+      - if notice
+        .alert.alert-info.alert-dismissable
+          button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
+          = notice
+      - if alert
+        .alert.alert-danger.alert-dismissable
+          button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
+          = alert
+      = yield
+      footer.right
+        small &copy; Student Laboratory of Programming
+        p

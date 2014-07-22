@@ -1,0 +1,10 @@
+- @title = 'Webアプリ管理'
+
+h3.bold #{@title}
+
+= link_to new_admin_web_application_path, class: 'btn btn-primary', remote: true do
+  = fa_icon 'plus', text: '登録'
+
+p
+
+= render partial: 'admin/web_applications/list'
