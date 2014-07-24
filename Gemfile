@@ -45,6 +45,9 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+gem 'devise'
+gem 'devise_ldap_authenticatable'
+
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 gem 'slim-rails'

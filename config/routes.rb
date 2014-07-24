@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'web_applications#index'
+  root to: 'top#index'
 
+  devise_for :users
+  resources :dashboard,        only: %w( index )
   resources :web_applications, only: %w( index )
 
-  get 'admin' => 'admin/web_applications#index', as: :admin
   namespace :admin do
     resources :web_applications, except: %w( show )
   end

@@ -1,5 +1,7 @@
 class Admin::WebApplicationsController < ApplicationController
   before_action :load_web_application, except: %w( index new create )
+  before_action :authenticate_user!
+  before_action :admin_user!
 
   def index
     @web_applications = WebApplication.all.page params[:page]

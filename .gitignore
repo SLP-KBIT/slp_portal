@@ -21,5 +21,6 @@
 .*.swp
 *#*
 
-# Ignore indivisual DB setting.
+# Ignore indivisual settings.
 /config/database.yml
+/config/ldap.yml

@@ -21,7 +21,7 @@
       = f.text_area :description, autofocus: true, class: 'form-control', size: 'x5'
 
   - modal_footer = capture do
-    = f.submit @button_caption, class: 'btn btn-primary'
+    = f.submit @button_caption, class: 'btn btn-info'
     = content_tag :button, 'キャンセル', class: 'btn btn-default', 'data-dismiss' => 'modal'
 
   - modal_dialog :id => 'modal-form', :header => { :show_close => true, :dismiss => 'modal', :title => @title }, body: modal_body, :footer => modal_footer
