@@ -4,13 +4,13 @@
   .table-responsive
     table.table.table-bordered
       thead
-        th style="width: 125px;"
+        th.center style="width: 125px;"
         th 名前
         th URL
       tbody
         - @web_applications.each do |web_application|
           tr
-            td
+            td.center
               = link_to edit_admin_web_application_path( web_application.id ), class: 'btn btn-success btn-xs', remote: true do
                 = fa_icon 'pencil', text: '編集'
               | &nbsp;

@@ -4,12 +4,12 @@
   .table-responsive
     table.table.table-bordered
       thead
-        th style="width: 75px; "管理者
+        th.center style="width: 75px; "管理者
         th アカウント名
       tbody
         - @users.each do |user|
           tr
-            td
+            td.center
               - if user.id == current_user.id
                 button.btn.btn-default.btn-xs disabled="true"
                   = fa_icon 'user', text: '自分'
