@@ -47,6 +47,6 @@ class Admin::WebApplicationsController < ApplicationController
   end
 
   def web_application_params
-    params.require( :web_application ).permit( :name, :url, :description )
+    params.require( :web_application ).permit( :name, :url, :server_id, :description )
   end
 end

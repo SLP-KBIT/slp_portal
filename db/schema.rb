@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724054057) do
+ActiveRecord::Schema.define(version: 20140724101750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "servers", force: true do |t|
+    t.string   "name",                 default: "",    null: false
+    t.text     "description"
+    t.string   "ip_address",           default: "",    null: false
+    t.boolean  "static_ip_flag",       default: false, null: false
+    t.boolean  "name_resolution_flag", default: false, null: false
+    t.string   "outside_open_ports",   default: "",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "uid",                default: "",    null: false
@@ -32,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140724054057) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "server_id",   default: 0,  null: false
   end
 
 end

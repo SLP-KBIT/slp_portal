@@ -8,6 +8,7 @@
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  server_id   :integer          default(0), not null
 #
 
 require 'rails_helper'

@@ -3,14 +3,17 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :dashboard,        only: %w( index )
+  resources :servers,          only: %w( index )
   resources :web_applications, only: %w( index )
 
   namespace :admin do
     resources :users,            only:   %w( index )
+    resources :servers,           except: %w( show )
     resources :web_applications, except: %w( show )
   end
   get 'admin/users/:id/admin'             => 'admin/users#admin',             as: :admin_admin_user
   get 'admin/users/:id/unadmin'           => 'admin/users#unadmin',           as: :unadmin_admin_user
+  get 'admin/servers/:id/delete'          => 'admin/servers#delete',          as: :delete_admin_server
   get 'admin/web_applications/:id/delete' => 'admin/web_applications#delete', as: :delete_admin_web_application
 
   # The priority is based upon order of creation: first created -> highest priority.

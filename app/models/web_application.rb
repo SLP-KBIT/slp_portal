@@ -8,11 +8,13 @@
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  server_id   :integer          default(0), not null
 #
 
 class WebApplication < ActiveRecord::Base
   validates :name, :url, presence: true
   scope :id_is, -> ( id ) { where( id: id ).first }
+  belongs_to :server
 
   paginates_per 5
 end

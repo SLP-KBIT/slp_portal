@@ -2,11 +2,12 @@
   strong 登録されているWebアプリはありません。
 - else
   .table-responsive
-    table.table.table-bordered
+    table.table.table-bordered.table-hover
       thead
         th.center style="width: 125px;"
         th 名前
         th URL
+        th サーバー
       tbody
         - @web_applications.each do |web_application|
           tr
@@ -17,5 +18,5 @@
               = link_to delete_admin_web_application_path( web_application.id ), class: 'btn btn-danger btn-xs', remote: true do
                 = fa_icon 'trash-o', text: '削除'
             td #{web_application.name}
-            td
-              = link_to web_application.url, web_application.url, target: '_blank'
+            td #{link_to web_application.url, web_application.url, target: '_blank'}
+            td #{web_application.server.name}

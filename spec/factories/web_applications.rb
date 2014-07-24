@@ -8,6 +8,7 @@
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  server_id   :integer          default(0), not null
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

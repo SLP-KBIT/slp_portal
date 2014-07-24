@@ -29,6 +29,9 @@ html
                 = link_to dashboard_index_path do
                   = fa_icon 'dashboard', text: 'ダッシュボード'
               li
+                = link_to servers_path do
+                  = fa_icon 'hdd-o', text: 'サーバー'
+              li
                 = link_to web_applications_path do
                   = fa_icon 'globe', text: 'Webアプリ'
               - if current_user.admin?
@@ -41,6 +44,9 @@ html
                     li
                       = link_to admin_users_path do
                         = fa_icon 'user', text: 'ユーザー'
+                    li
+                      = link_to admin_servers_path do
+                        = fa_icon 'hdd-o', text: 'サーバー'
                     li
                       = link_to admin_web_applications_path do
                         = fa_icon 'globe', text: 'Webアプリ'

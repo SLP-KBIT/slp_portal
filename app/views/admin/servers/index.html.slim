@@ -1,0 +1,10 @@
+- @title = 'サーバー管理'
+
+h3.bold #{@title}
+
+= link_to new_admin_server_path, class: 'btn btn-info', remote: true do
+  = fa_icon 'plus', text: '登録'
+
+p
+
+= render partial: 'admin/servers/list'

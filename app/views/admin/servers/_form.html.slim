@@ -1,5 +1,5 @@
-- unless @web_application
-  - @web_application = WebApplication.new
+- unless @server
+  - @server = Server.new
   - @title = '登録'
   - @button_caption = '登録'
   - @action = 'create'
@@ -7,22 +7,29 @@
   - @title = '編集'
   - @button_caption = '更新'
   - @action = 'update'
-- @server_ids = Server.all.pluck :name, :id
 
-= form_for @web_application, url: { controller: 'admin/web_applications', action: @action }, remote: true do |f|
+= form_for @server, url: { controller: 'admin/servers', action: @action }, remote: true do |f|
   - modal_body = capture do
     .form-group
       = f.label :name, '名前', class: 'control-label'
       = f.text_field :name, autofocus: true, class: 'form-control'
     .form-group
-      = f.label :url, 'URL', class: 'control-label'
-      = f.text_field :url, autofocus: true, class: 'form-control'
-    .form-group
-      = f.label :server_id, 'サーバー', class: 'control-label'
-      = f.select :server_id, @server_ids, { selected: @web_application.server_id }, { class: 'form-control' }
-    .form-group
       = f.label :description, '説明 (任意)', class: 'control-label'
       = f.text_area :description, autofocus: true, class: 'form-control', size: 'x3'
+    .form-group
+      = f.label :ip_address, 'IPアドレス', class: 'control-label'
+      = f.text_field :ip_address, autofocus: true, class: 'form-control'
+    .checkbox
+      label
+        | 固定IPアドレス
+        = f.check_box :static_ip_flag
+    .checkbox
+      label
+        | 名前解決可能 (DNS登録)
+        = f.check_box :name_resolution_flag
+    .form-group
+      = f.label :outside_open_ports, '学外公開ポート', class: 'control-label'
+      = f.text_field :outside_open_ports, autofocus: true, class: 'form-control'
 
   - modal_footer = capture do
     = f.submit @button_caption, class: 'btn btn-info'

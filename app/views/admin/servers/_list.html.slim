@@ -1,0 +1,34 @@
+- if @servers.empty?
+  strong 登録されているWebアプリはありません。
+- else
+  .table-responsive
+    table.table.table-bordered.table-hover
+      thead
+        th.center style="width: 125px;"
+        th 名前
+        th IPアドレス
+        td 学外公開ポート
+      tbody
+        - @servers.each do |server|
+          tr
+            td.center
+              = link_to edit_admin_server_path( server.id ), class: 'btn btn-success btn-xs', remote: true do
+                = fa_icon 'pencil', text: '編集'
+              | &nbsp;
+              = link_to delete_admin_server_path( server.id ), class: 'btn btn-danger btn-xs', remote: true do
+                = fa_icon 'trash-o', text: '削除'
+            td #{server.name}
+            td
+              | #{server.ip_address}
+              - if server.static_ip?
+                | &nbsp;
+                span.label.label-success
+                  = fa_icon 'check', text: '固定IP'
+              - if server.name_resolution?
+                | &nbsp;
+                span.label.label-success
+                  = fa_icon 'check', text: '名前解決'
+            td
+              - server.outside_open_ports.split( ',' ).each do |port|
+                span.label.label-default #{port}
+                | &nbsp;
