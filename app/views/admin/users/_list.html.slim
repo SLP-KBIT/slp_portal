@@ -1,0 +1,22 @@
+- if @users.empty?
+  strong 登録されているユーザーはいません。
+- else
+  .table-responsive
+    table.table.table-bordered
+      thead
+        th style="width: 75px; "管理者
+        th アカウント名
+      tbody
+        - @users.each do |user|
+          tr
+            td
+              - if user.id == current_user.id
+                button.btn.btn-default.btn-xs disabled="true"
+                  = fa_icon 'user', text: '自分'
+              - elsif user.admin?
+                = link_to unadmin_admin_user_path( user.id ), class: 'btn btn-danger btn-xs', remote: true do
+                  = fa_icon 'minus', text: '解除'
+              - else
+                = link_to admin_admin_user_path( user.id ), class: 'btn btn-success btn-xs', remote: true do
+                  = fa_icon 'plus', text: '設定'
+            td #{user.uid}

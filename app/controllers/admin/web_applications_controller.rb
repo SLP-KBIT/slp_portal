@@ -4,7 +4,7 @@ class Admin::WebApplicationsController < ApplicationController
   before_action :admin_user!
 
   def index
-    @web_applications = WebApplication.all.page params[:page]
+    @web_applications = WebApplication.all
   end
 
   def new
