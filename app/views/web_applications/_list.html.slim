@@ -2,9 +2,12 @@
   strong 登録されているWebアプリはありません。
 - else
   - @web_applications.each do |web_application|
-    .alert.alert-default
-      = link_to web_application.url, target: '_blank' do
-        h4.bold
-          = fa_icon 'share', text: web_application.name
-      = simple_format web_application.description
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title.bold #{web_application.name}
+      .panel-body
+        = simple_format web_application.description
+        = link_to web_application.url, class: 'btn btn-default btn-sm', target: '_blank' do
+          = fa_icon 'external-link', text: web_application.url
+
   = paginate @web_applications
