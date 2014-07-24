@@ -1,5 +1,15 @@
 - @title = 'サーバー'
 
-h3.bold #{@title}
+.row
+  .col-md-8
+    h3.bold #{@title}
+  .col-md-4
+    p
+    = form_tag servers_path, method: :get, class: 'form' do
+      .input-group
+        span.input-group-addon
+          = fa_icon 'search'
+        = text_field_tag :keyword, params[:keyword], class: 'form-control'
+    p
 
 = render partial: 'servers/list'

@@ -17,4 +17,12 @@ class WebApplication < ActiveRecord::Base
   belongs_to :server
 
   paginates_per 5
+
+  def self.search( keyword )
+    if keyword
+      WebApplication.where( ['name LIKE ?', "%#{keyword}%"] )
+    else
+      WebApplication.all
+    end
+  end
 end

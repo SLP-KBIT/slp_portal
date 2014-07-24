@@ -27,4 +27,12 @@ class Server < ActiveRecord::Base
   def name_resolution?
     name_resolution_flag
   end
+
+  def self.search( keyword )
+    if keyword
+      Server.where( ['name LIKE ?', "%#{keyword}%"] )
+    else
+      Server.all
+    end
+  end
 end
