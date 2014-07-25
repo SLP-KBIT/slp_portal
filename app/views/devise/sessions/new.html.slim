@@ -11,15 +11,15 @@ br
       .panel-body
         = form_for :user, url: { controller: 'devise/sessions', action: 'new' }, html: { class: 'form-horizontal' } do |f|
           .form-group
-            = f.label :uid, 'アカウント名', class: 'col-md-3 control-label'
-            .col-md-8
+            = f.label :uid, 'アカウント', class: 'col-md-3 control-label'
+            .col-md-9
               .input-group
                 span.input-group-addon
                   = fa_icon 'user'
                 = f.text_field :uid, autofocus: true, class: 'form-control'
           .form-group
             = f.label :password, 'パスワード', class: 'col-md-3 control-label'
-            .col-md-8
+            .col-md-9
               .input-group
                 span.input-group-addon
                   = fa_icon 'lock'
