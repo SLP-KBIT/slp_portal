@@ -1,5 +1,6 @@
 - @title = 'ユーザー管理'
 
-h3.bold #{@title}
+h3.bold
+  = fa_stacked_icon 'user inverse', base: 'square', text: @title
 
 = render partial: 'admin/users/list'

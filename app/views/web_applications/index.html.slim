@@ -2,7 +2,8 @@
 
 .row
   .col-md-8
-    h3.bold #{@title}
+    h3.bold
+      = fa_stacked_icon 'globe inverse', base: 'square', text: @title
   .col-md-4
     p
     = form_tag web_applications_path, method: :get, class: 'form' do

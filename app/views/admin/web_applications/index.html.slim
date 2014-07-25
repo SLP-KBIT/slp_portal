@@ -1,6 +1,7 @@
 - @title = 'Webアプリ管理'
 
-h3.bold #{@title}
+h3.bold
+  = fa_stacked_icon 'globe inverse', base: 'square', text: @title
 
 = link_to new_admin_web_application_path, class: 'btn btn-info', remote: true do
   = fa_icon 'plus', text: '登録'
