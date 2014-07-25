@@ -6,39 +6,40 @@
       .panel-heading
         h3.panel-title.bold #{server.name}
       .panel-body
-        table
-          tr
-            th style="width: 125px;" IPアドレス
-            td
-              strong ：#{server.ip_address}
-              - if server.static_ip?
-                | &nbsp;
-                span.label.label-success
-                  = fa_icon 'check', text: '固定IP'
-              - if server.name_resolution?
-                | &nbsp;
-                span.label.label-success
-                  = fa_icon 'check', text: '名前解決'
-          tr
-            th style="width: 125px;" 学外公開ポート
-            td
-              strong ：
-              - if server.outside_open_ports.empty?
-                | なし
-              - else
-                - server.outside_open_ports.split( ',' ).each do |port|
-                  span.label.label-default #{port}
+        .table-responsive.noborder
+          table.table.table-condensed.table-noborder
+            tr
+              th style="width: 125px;" IPアドレス
+              td
+                strong ：#{server.ip_address}
+                - if server.static_ip?
                   | &nbsp;
-          tr
-            th style="width: 125px;" Webアプリ
-            td
-              strong ：
-              - if server.web_applications.empty?
-                | なし
-              - else
-                - server.web_applications.each do |web_application|
-                  span.label.label-default #{web_application.name}
+                  span.label.label-success
+                    = fa_icon 'check', text: '固定IP'
+                - if server.name_resolution?
                   | &nbsp;
+                  span.label.label-success
+                    = fa_icon 'check', text: '名前解決'
+            tr
+              th style="width: 125px;" 学外公開ポート
+              td
+                strong ：
+                - if server.outside_open_ports.empty?
+                  | なし
+                - else
+                  - server.outside_open_ports.split( ',' ).each do |port|
+                    span.label.label-default #{port}
+                    | &nbsp;
+            tr
+              th style="width: 125px;" Webアプリ
+              td
+                strong ：
+                - if server.web_applications.empty?
+                  | なし
+                - else
+                  - server.web_applications.each do |web_application|
+                    span.label.label-default #{web_application.name}
+                    | &nbsp;
         p
         = simple_format server.description
 
