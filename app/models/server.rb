@@ -18,7 +18,7 @@ class Server < ActiveRecord::Base
   scope :id_is, -> ( id ) { where( id: id ).first }
   has_many :web_applications
 
-  paginates_per 5
+  paginates_per 6
 
   def static_ip?
     static_ip_flag
