@@ -27,7 +27,7 @@
                 - if server.outside_open_ports.empty?
                   | なし
                 - else
-                  - server.outside_open_ports.split( ',' ).each do |port|
+                  - server.outside_open_ports.split( ', ' ).each do |port|
                     span.label.label-default #{port}
                     | &nbsp;
             tr

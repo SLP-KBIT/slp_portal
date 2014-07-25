@@ -29,6 +29,6 @@
                 span.label.label-success
                   = fa_icon 'check', text: '名前解決'
             td
-              - server.outside_open_ports.split( ',' ).each do |port|
+              - server.outside_open_ports.split( ', ' ).each do |port|
                 span.label.label-default #{port}
                 | &nbsp;
