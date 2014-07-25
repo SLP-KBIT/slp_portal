@@ -38,7 +38,7 @@
                     | なし
                   - else
                     - server.web_applications.each do |web_application|
-                      span.label.label-default #{web_application.name}
+                      span.label.label-warning #{web_application.name}
                       | &nbsp;
           = simple_format server.description
 
