@@ -7,7 +7,8 @@
         th.center style="width: 125px;"
         th 名前
         th IPアドレス
-        td 学外公開ポート
+        th 学外公開ポート
+        th Webアプリ
       tbody
         - @servers.each do |server|
           tr
@@ -31,4 +32,8 @@
             td
               - server.outside_open_ports.split( ', ' ).each do |port|
                 span.label.label-default #{port}
+                | &nbsp;
+            td
+              - server.web_applications.each do |web_application|
+                span.label.label-warning #{web_application.name}
                 | &nbsp;
