@@ -16,7 +16,7 @@ class WebApplication < ActiveRecord::Base
   scope :id_is, -> ( id ) { where( id: id ).first }
   belongs_to :server
 
-  paginates_per 6
+  paginates_per 8
 
   def self.search( keyword )
     if keyword

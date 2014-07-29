@@ -4,12 +4,14 @@
   .row
     - @web_applications.each do |web_application|
       .col-md-6
-        .alert.alert-warning
-          = link_to web_application.url, class: 'btn btn-warning btn-lg float-right', target: '_blank' do
-            = fa_icon 'external-link'
-          h4.bold #{web_application.name}
-          strong #{web_application.url}
-          p
-          = simple_format web_application.description
+        .panel.panel-default
+          .panel-heading
+            = link_to web_application.url, class: 'link-default', target: '_blank' do
+              h3.panel-title.bold
+                = fa_icon 'external-link', text: web_application.name
+          .panel-body
+            strong #{web_application.url}
+            p
+            = simple_format web_application.description
 
   = paginate @web_applications
