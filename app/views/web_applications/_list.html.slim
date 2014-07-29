@@ -1,17 +1,19 @@
 - if @web_applications.empty?
   .alert.alert-danger 登録されているWebアプリはありません。
 - else
-  .row
-    - @web_applications.each do |web_application|
-      .col-md-6
-        .panel.panel-default
-          .panel-heading
-            = link_to web_application.url, class: 'link-default', target: '_blank' do
-              h3.panel-title.bold
-                = fa_icon 'external-link', text: web_application.name
-          .panel-body
-            strong #{web_application.url}
-            p
-            = simple_format web_application.description
-
-  = paginate @web_applications
+  .table-responsive
+    table.table.table-bordered.table-hover.table-striped
+      thead
+        th 名前
+        th URL
+        th サーバー
+        th 説明
+      tbody
+        - @web_applications.each do |web_application|
+          tr
+            td #{web_application.name}
+            td
+              = link_to web_application.url, class: 'btn btn-default btn-xs', target: '_blank' do
+                = fa_icon 'external-link', text: web_application.url
+            td #{web_application.server.name}
+            td #{simple_format web_application.description}

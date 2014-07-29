@@ -1,8 +1,8 @@
 - if @web_applications.empty?
-  strong 登録されているWebアプリはありません。
+  .alert.alert-danger 登録されているWebアプリはありません。
 - else
   .table-responsive
-    table.table.table-bordered.table-hover
+    table.table.table-bordered.table-hover.table-striped
       thead
         th.center style="width: 125px;"
         th 名前
@@ -18,5 +18,7 @@
               = link_to delete_admin_web_application_path( web_application.id ), class: 'btn btn-danger btn-xs', remote: true do
                 = fa_icon 'trash-o', text: '削除'
             td #{web_application.name}
-            td #{link_to web_application.url, web_application.url, target: '_blank'}
+            td
+              = link_to web_application.url, class: 'btn btn-default btn-xs', target: '_blank' do
+                = fa_icon 'external-link', text: web_application.url
             td #{web_application.server.name}

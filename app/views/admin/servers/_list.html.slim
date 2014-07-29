@@ -1,5 +1,5 @@
 - if @servers.empty?
-  strong 登録されているWebアプリはありません。
+  .alert.alert-danger 登録されているサーバーはありません。
 - else
   .table-responsive
     table.table.table-bordered.table-hover
@@ -21,6 +21,8 @@
             td #{server.name}
             td
               | #{server.ip_address}
+              - if server.static_ip? or server.name_resolution?
+                br
               - if server.static_ip?
                 | &nbsp;
                 span.label.label-success

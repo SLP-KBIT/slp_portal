@@ -2,21 +2,21 @@
   strong 登録されているユーザーはいません。
 - else
   .table-responsive
-    table.table.table-bordered.table-hover
+    table.table.table-bordered.table-hover.table-striped
       thead
-        th.center style="width: 75px; "管理者
         th アカウント名
+        th.center style="width: 75px; "管理者
       tbody
         - @users.each do |user|
           tr
+            td #{user.uid}
             td.center
               - if user.id == current_user.id
                 button.btn.btn-default.btn-xs disabled="true"
                   = fa_icon 'user', text: '自分'
               - elsif user.admin?
                 = link_to unadmin_admin_user_path( user.id ), class: 'btn btn-danger btn-xs', remote: true do
-                  = fa_icon 'minus', text: '解除'
+                  = fa_icon 'minus', text: '剥奪'
               - else
                 = link_to admin_admin_user_path( user.id ), class: 'btn btn-success btn-xs', remote: true do
-                  = fa_icon 'plus', text: '設定'
-            td #{user.uid}
+                  = fa_icon 'plus', text: '付与'
